@@ -3,4 +3,4 @@ Data Peserta Sanbercode Bootcamp ReactJS
 2. Email: bayusamudra.55.02.com@gmail.com
 3. Sistem Operasi yang digunakan: Ubuntu 20.04 (Linux 5.8.0)
 4. Akun Gitlab/Github: bayusamudra5502 (https://github.com/bayusamudra5502/)
-5. Akun Telegram: @bayusamudra5502
+5. Akun Telegram: Bayu Samudra (@bayusamudra5502)
