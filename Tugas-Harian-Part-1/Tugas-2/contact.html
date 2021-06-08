@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contact</title>
+
+        <style>
+            h1 {
+                text-align: center;
+            }
+
+            .component {
+                margin-bottom: 15px;
+            }
+
+            label,
+            input,
+            .option {
+                display: inline-block;
+            }
+
+            .left-label {
+                display: inline-block;
+                margin-right: 20px;
+                width: 100px;
+                box-sizing: border-box;
+                font-weight: bold;
+            }
+            
+            form{
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Hubungi Kami</h1>
+            <p>
+                <strong>Kantor : </strong> di jalan belum jadi<br />
+                <strong>Nomor Telepon : </strong>0822-4043-2470<br />
+                <strong>Email : </strong>bayusamudra.55.02.com@gmail.com
+            </p>
+        </section>
+        <section>
+            <h1>Kirimkan Pesan</h1>
+            <form action="#" method="GET">
+                <div class="component">
+                    <label for="nama" class="left-label">Nama</label
+                    ><input name="nama" id="nama" type="text" />
+                </div>
+
+                <div class="component">
+                    <label for="email" class="left-label">Email</label
+                    ><input id="email" name="email" type="email" />
+                </div>
+
+                <div class="component">
+                    <p class="left-label">Gender</p>
+                    <div class="option">
+                        <input
+                            id="gender-male"
+                            name="gender"
+                            type="radio"
+                            value="male"
+                        />
+                        <label for="gender-male">Laki-Laki</label><br>
+
+                        <input
+                            id="gender-female"
+                            name="gender"
+                            type="radio"
+                            value="female"
+                        />
+                        <label for="gender-female">Perempuan</label>
+                    </div>
+                </div>
+
+                <div class="component">
+                    <label for="pesan" class="left-label">Pesan Anda</label>
+                    <textarea
+                        name="pesan"
+                        id="pesan"
+                        rows="6"
+                        cols="50"
+                    ></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <section>
+            <a href="index.html">Kembali Ke Index</a>
+        </section>
+    </body>
+</html>
