@@ -13,26 +13,44 @@ header{
     position: fixed;
     top:0;
     width: 100vw;
-    padding: 10px 50px 0 50px;
+    padding: 0 50px 0 50px;
     box-sizing: border-box;
 }
 
 nav{
     float: right;
+    padding: 0;
 }
 
 nav li{
     display: inline-block;
-    margin: 0 10px;
+    padding: 0 10px;
+}
+
+nav ul{
+    margin:0;
+    line-height: 60px;
+}
+
+nav li:hover{
+    background-color: #eee;
+    font-weight: bold;
+}
+
+li a{
+    text-decoration: none;
+    color: black;
 }
 
 img{
     float: left;
+    height: 60px;
+    width: auto;
 }
 
 section{
     max-width: 1200px;
-    margin: 100px auto 5px;
+    margin: 80px auto 5px;
     background-color: rgba(255,255,255,60%);
     padding: 20px
 }
