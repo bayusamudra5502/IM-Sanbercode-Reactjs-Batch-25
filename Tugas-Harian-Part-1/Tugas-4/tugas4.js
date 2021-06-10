@@ -34,11 +34,6 @@ for (i = 1; i <= 20; i++) {
 console.log();
 
 // SOAL 3
-// Cara lain :
-// for (i = 1; i <= 7; i++) {
-//     console.log("#".repeat(i));
-// }
-
 for (i = 1; i <= 7; i++) {
     var str = "";
     for (var j = 0; j < i; j++) {
