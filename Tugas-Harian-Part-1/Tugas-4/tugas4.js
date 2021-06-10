@@ -13,7 +13,7 @@ console.log("LOOPING KEDUA");
 
 while (i > 0) {
     if (i <= 20 && i % 2 === 0) {
-        console.log(i.toString(), "-", "I will become a frontend developer.");
+        console.log(i.toString(), "-", "I will become a frontend developer");
     }
 
     i -= 1;
