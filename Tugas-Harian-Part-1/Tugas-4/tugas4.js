@@ -34,14 +34,11 @@ for (i = 1; i <= 20; i++) {
 console.log();
 
 // SOAL 3
-for (i = 1; i <= 7; i++) {
-    var str = "";
-    for (var j = 0; j < i; j++) {
-        str += "#";
-    }
-
+var str = "#";
+for (i = 1; i <= 7; i++, str += "#") {
     console.log(str);
 }
+
 console.log();
 
 // SOAL 4
