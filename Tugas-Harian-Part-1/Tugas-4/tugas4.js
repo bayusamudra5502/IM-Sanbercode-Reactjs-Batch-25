@@ -7,7 +7,7 @@ while (i <= 20) {
         console.log(i.toString(), "-", "I love coding");
     }
 
-    i += 1;
+    i++;
 }
 console.log("LOOPING KEDUA");
 
@@ -16,7 +16,7 @@ while (i > 0) {
         console.log(i.toString(), "-", "I will become a frontend developer");
     }
 
-    i -= 1;
+    i--;
 }
 
 console.log();
