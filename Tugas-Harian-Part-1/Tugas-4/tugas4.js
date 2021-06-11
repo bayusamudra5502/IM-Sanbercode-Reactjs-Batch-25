@@ -34,8 +34,7 @@ for (i = 1; i <= 20; i++) {
 console.log();
 
 // SOAL 3
-var str = "#";
-for (i = 1; i <= 7; i++, str += "#") {
+for (var str = "#", i = 1; i <= 7; i++, str += "#") {
     console.log(str);
 }
 
