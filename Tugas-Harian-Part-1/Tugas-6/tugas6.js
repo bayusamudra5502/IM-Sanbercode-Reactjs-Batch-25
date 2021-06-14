@@ -76,10 +76,10 @@ let buku = {
     warnaSampul: ["hitam"],
 };
 // kode diatas ini jangan di rubah atau di hapus sama sekali
-const { warnaSampul: oldWarna } = buku;
+const { warnaSampul: oldWarna, ...sisa } = buku;
 
 buku = {
-    ...buku,
+    ...sisa,
     ...dataBukuTambahan,
     warnaSampul: [...oldWarna, ...warna],
 };
