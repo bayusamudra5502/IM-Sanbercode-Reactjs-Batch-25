@@ -1,7 +1,8 @@
 // SOAL 1
 console.log("--- NOMOR 1 ---");
-const luasLingkaran = (r) => Math.PI * r ** 2;
-const kelilingLingkaran = (r) => Math.PI * r * 2;
+const PI = 22 / 7;
+const luasLingkaran = (r) => PI * r ** 2;
+const kelilingLingkaran = (r) => PI * r * 2;
 
 console.log(luasLingkaran(7));
 console.log(kelilingLingkaran(7));
