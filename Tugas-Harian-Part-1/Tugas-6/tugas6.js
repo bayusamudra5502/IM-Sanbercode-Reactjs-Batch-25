@@ -25,7 +25,7 @@ console.log(perkenalan); // Menampilkan "Pak John adalah seorang penulis yang be
 console.log();
 console.log("--- NOMOR 3 ---");
 
-const newFunction = function literal(firstName, lastName) {
+const newFunction = (firstName, lastName) => {
     return {
         firstName,
         lastName,
