@@ -60,7 +60,6 @@ class Frog extends Animal {
 class Ape extends Animal {
     constructor(name) {
         super(name);
-        super.legs = 2;
     }
 
     yell() {
@@ -88,31 +87,31 @@ class Clock {
     constructor({ template }) {
         this._timer = null;
         this._template = template;
+    }
 
-        function render() {
-            var date = new Date();
+    render() {
+        var date = new Date();
 
-            var hours = date.getHours();
-            if (hours < 10) hours = "0" + hours;
+        var hours = date.getHours();
+        if (hours < 10) hours = "0" + hours;
 
-            var mins = date.getMinutes();
-            if (mins < 10) mins = "0" + mins;
+        var mins = date.getMinutes();
+        if (mins < 10) mins = "0" + mins;
 
-            var secs = date.getSeconds();
-            if (secs < 10) secs = "0" + secs;
+        var secs = date.getSeconds();
+        if (secs < 10) secs = "0" + secs;
 
-            var output = template
-                .replace("h", hours)
-                .replace("m", mins)
-                .replace("s", secs);
+        var output = this._template
+            .replace("h", hours)
+            .replace("m", mins)
+            .replace("s", secs);
 
-            console.log(output);
-        }
+        console.log(output);
+    }
 
-        this.start = function () {
-            render();
-            this._timer = setInterval(render, 1000);
-        };
+    start() {
+        this.render();
+        this._timer = setInterval(() => this.render(), 1000);
     }
 
     stop() {
