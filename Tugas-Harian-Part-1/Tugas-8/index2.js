@@ -7,8 +7,9 @@ var books = [
 ]
  
 // Lanjutkan code untuk menjalankan function readBooksPromise 
+const WAKTU_BACA = 10000
 
-function bacaBuku(time=10000){
+function bacaBuku(time){
     if(books.length > 0){
         readBooksPromise(time, books.shift())
             .then(newTime => bacaBuku(newTime))
@@ -16,4 +17,4 @@ function bacaBuku(time=10000){
     }
 }
 
-bacaBuku();
+bacaBuku(WAKTU_BACA);

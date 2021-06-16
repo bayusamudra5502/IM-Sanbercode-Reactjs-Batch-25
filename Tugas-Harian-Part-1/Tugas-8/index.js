@@ -9,13 +9,17 @@ var books = [
 ];
 
 // Tulis code untuk memanggil function readBooks di sini
+const WAKTU_BACA = 10000
 
-const mulaiBaca = (readTime = 10000) => {
+const mulaiBaca = (readTime) => {
     let lastTime =  readTime;
 
     const bookObj = books.shift();
     const pemanggil = (timeLeft) => {
-        if(timeLeft >= 0 && books.length > 0 && lastTime !== timeLeft){
+        // Menjaga agar tidak repeat jika waktu habis atau habis karena
+        // membaca buku yg waktunya melebihi sisa waktu. (Konsistensi dgn no.2)
+
+        if(timeLeft > 0 && books.length > 0 && lastTime !== timeLeft){
             lastTime = timeLeft
             const bookObj = books.shift();
             readBooks(timeLeft, bookObj, pemanggil);
@@ -25,4 +29,4 @@ const mulaiBaca = (readTime = 10000) => {
     readBooks(readTime, bookObj, pemanggil);
 }
 
-mulaiBaca(10000);
+mulaiBaca(WAKTU_BACA);
