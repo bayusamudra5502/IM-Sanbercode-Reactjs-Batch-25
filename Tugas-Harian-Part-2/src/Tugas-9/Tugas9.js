@@ -5,11 +5,11 @@ function FormBuah() {
         <div className="form">
             <h1>Form Pembelian Buah</h1>
             <form action="#">
-                <p>
+                <div>
                     <label htmlFor="nama-pelanggan">Nama Pelanggan</label>
                     <input id="nama-pelanggan" name="nama" required />
-                </p>
-                <p>
+                </div>
+                <div>
                     <label>Daftar Item</label>
                     <div className="daftar-buah">
                         <p className="pilihan-buah">
@@ -58,10 +58,10 @@ function FormBuah() {
                             <label htmlFor="anggur">Anggur</label>
                         </p>
                     </div>
-                </p>
-                <p>
+                </div>
+                <div>
                     <button>Kirim</button>
-                </p>
+                </div>
             </form>
         </div>
     );
