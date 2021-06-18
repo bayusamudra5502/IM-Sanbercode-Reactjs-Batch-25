@@ -1,0 +1,33 @@
+.form {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto 50px;
+}
+
+label {
+    font-weight: bold;
+    width: 170px;
+    display: inline-block;
+}
+
+.pilihan-buah label{
+    font-weight: normal;
+}
+
+.daftar-buah{
+    display: inline-block;
+}
+
+button {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 1rem;
+    font-size: 1rem;
+    padding: 2px 9px;
+}
+
+.pilihan-buah {
+    margin: 3px 0;
+}

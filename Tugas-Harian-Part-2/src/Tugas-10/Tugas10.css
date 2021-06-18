@@ -1,0 +1,20 @@
+table{
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+th{
+    background-color: #aaa;
+}
+
+td {
+    background-color: #FF773F;
+}
+
+.kolom-nama{
+    width: 300px;
+}
+
+.kolom-harga, .kolom-berat{
+    width: 150px;
+}

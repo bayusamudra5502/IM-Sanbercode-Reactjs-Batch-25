@@ -1,16 +1,9 @@
 body{
     font-family: serif;
-}
-
-.form {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 20px;
-    width: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 h1 {
@@ -18,28 +11,7 @@ h1 {
     font-size: 2.2em;
 }
 
-label {
-    font-weight: bold;
-    width: 170px;
-    display: inline-block;
-}
-
-.pilihan-buah label{
-    font-weight: normal;
-}
-
-.daftar-buah{
-    display: inline-block;
-}
-
-button {
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 1rem;
-    font-size: 1rem;
-    padding: 2px 9px;
-}
-
-.pilihan-buah {
-    margin: 3px 0;
+h2{
+    text-align: center;
+    font-size: 2em;
 }
