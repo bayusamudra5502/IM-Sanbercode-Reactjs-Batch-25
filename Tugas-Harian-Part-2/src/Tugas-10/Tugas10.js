@@ -53,7 +53,7 @@ class TabelBuahRow extends React.Component {
             <tr>
                 <td>{this.props.nama}</td>
                 <td>{this.props.harga}</td>
-                <td>{this.props.berat}</td>
+                <td>{this.props.berat/1000} kg</td>
             </tr>
         );
     }
