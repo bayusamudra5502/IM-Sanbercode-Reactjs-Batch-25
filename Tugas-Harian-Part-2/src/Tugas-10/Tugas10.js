@@ -7,9 +7,7 @@ class TabelBuah extends React.Component {
         const barisData = this.props.dataBuah.map((buah) => (
             <TabelBuahRow
                 key={buah.nama}
-                nama={buah.nama}
-                harga={buah.harga}
-                berat={buah.berat} />
+                {...buah} />
         ));
 
         return (
