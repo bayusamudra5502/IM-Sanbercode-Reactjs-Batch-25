@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  margin: 0 auto;
+}
+
+.tabel {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-width: 700px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border-bottom: 2px solid hsl(0, 0%, 85%);
+  padding: 5px;
+}
+
+tbody tr:hover {
+  background-color: hsl(0, 0%, 90%);
+}
+
+button {
+  border: 0;
+  background-color: #264653;
+  padding: 10px;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 5px;
+  color: white;
+  border-radius: 10px;
+  font-family: inherit;
+  box-shadow: 1px 1px 1px 0 hsl(0, 0%, 80%);
+}
+
+button:active {
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+
+td:first-child,
+td:last-child {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-width: 700px;
+}
+
+form {
+  border: 1px solid rgb(207, 207, 207);
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-component {
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-weight: lighter;
+}
+
+label {
+  font-weight: normal;
+  display: block;
+  color: hsl(0, 0%, 60%);
+  font-size: 0.8em;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.form-control {
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
