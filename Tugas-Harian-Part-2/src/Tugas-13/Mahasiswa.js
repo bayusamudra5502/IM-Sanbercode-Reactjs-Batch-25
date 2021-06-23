@@ -20,7 +20,6 @@ const Mahasiswa = () => {
   const [data, setData] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [editData, setEditData] = useState(DEFAULT_STATE_UPDATE_DATA);
-  const [firstInit, setFirstInit] = useState(false);
 
   const getAllData = async () => {
     try {
@@ -38,15 +37,10 @@ const Mahasiswa = () => {
   };
 
   useEffect(() => {
-    if (!firstInit) {
-      getAllData().then(() => setFirstInit(true));
-    }
-
-    if (!updater) {
-      updater = setInterval(async () => {
-        getAllData();
-      }, UPDATE_INTERVAL);
-    }
+    getAllData().then();
+    updater = setInterval(async () => {
+      getAllData();
+    }, UPDATE_INTERVAL);
 
     return () => {
       clearInterval(updater);
