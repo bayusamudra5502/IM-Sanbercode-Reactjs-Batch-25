@@ -47,28 +47,40 @@ const Mahasiswa = () => {
     };
   }, []);
 
-  const applyUpdateHandler = async ({ id, ...data }) => {
-    try {
-      const URL_DEST = URL_BASE + id.toString();
-      await axios.put(URL_DEST, transformDataForServer(data));
-
-      setEditMode(false);
-      setEditData(DEFAULT_STATE_UPDATE_DATA);
-    } catch (e) {
-      console.warn("Terjadi kesalahan pada saat pengambilan data.");
-    } finally {
-      await getAllData();
-    }
-  };
-
   const addDataHandler = async (data) => {
     try {
       const dataWillSend = transformDataForServer(data);
       await axios.post(URL_BASE.slice(0, -1), dataWillSend);
     } catch (e) {
-      console.warn("Terjadi kesalahan pada saat pengambilan data.");
+      console.warn("Terjadi kesalahan pada saat penambahan data.");
     } finally {
       await getAllData();
+    }
+  };
+
+  const applyUpdateHandler = async ({ id, ...data }) => {
+    try {
+      const URL_DEST = URL_BASE + id.toString();
+      await axios.put(URL_DEST, transformDataForServer(data));
+    } catch (e) {
+      if (e.response.status === 404) {
+        if (
+          confirm(
+            "Data sudah tidak ada di database. Apakah anda ingin menambahkannya saja?"
+          )
+        ) {
+          addDataHandler(data);
+        } else {
+          console.info("Data sudah tidak ada. Tidak dilakukan apa-apa");
+        }
+      } else {
+        console.warn("Terjadi kesalahan pada saat pengeditan data.");
+      }
+    } finally {
+      await getAllData();
+
+      setEditMode(false);
+      setEditData(DEFAULT_STATE_UPDATE_DATA);
     }
   };
 
@@ -88,7 +100,13 @@ const Mahasiswa = () => {
       const URL_DEST = URL_BASE + idTrigger.toString();
       await axios.delete(URL_DEST);
     } catch (e) {
-      console.warn("Terjadi kesalahan saat pengambilan data");
+      if (e.response.status === 404) {
+        console.info(
+          "Data sudah tidak ada di database. Tidak dilakukan prubahan lain."
+        );
+      } else {
+        console.warn("Terjadi kesalahan saat penghapusan data");
+      }
     } finally {
       await getAllData();
     }
