@@ -35,8 +35,12 @@ const FormMahasiswa = (props) => {
 
   const changeHandler = (e) => {
     const nama = e.target.name;
-    const value =
-      e.target.id === "nilai" ? parseInt(e.target.value) ?? "" : e.target.value;
+    let value;
+    if (e.target.id === "nilai") {
+      value = isNaN(parseInt(e.target.value)) ? "" : parseInt(e.target.value);
+    } else {
+      value = e.target.value ?? "";
+    }
 
     setState({
       ...state,
