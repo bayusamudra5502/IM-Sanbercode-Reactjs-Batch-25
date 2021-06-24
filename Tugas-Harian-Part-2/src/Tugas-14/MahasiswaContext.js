@@ -6,7 +6,7 @@ export const ActionContext = createContext();
 
 function MahasiswaProvider({ children }) {
   const mahasiswa = useState([]);
-  const action = useState({ mode: "UPDATE", id: -1, data: {} });
+  const action = useState({ mode: "UPDATE", id: -1 });
 
   return (
     <ActionContext.Provider value={action}>

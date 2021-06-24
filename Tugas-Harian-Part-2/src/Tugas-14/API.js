@@ -1,15 +1,19 @@
 import axios from "axios";
-
 const URL_BASE = "http://backendexample.sanbercloud.com/api/student-scores";
 
 function dataTransform({ name, course, id, score }) {
   return { id, name, course, score };
 }
 
-async function getData() {
+async function getData(id = null) {
   try {
-    const fecthedData = await axios.get(URL_BASE);
-    return fecthedData.data.map((data) => dataTransform(data));
+    if (id) {
+      const fecthedData = await axios.get(`${URL_BASE}/${id}`);
+      return dataTransform(fecthedData.data);
+    } else {
+      const fecthedData = await axios.get(URL_BASE);
+      return fecthedData.data.map((data) => dataTransform(data));
+    }
   } catch (e) {
     console.error("Data gagal diambil.");
     return [];

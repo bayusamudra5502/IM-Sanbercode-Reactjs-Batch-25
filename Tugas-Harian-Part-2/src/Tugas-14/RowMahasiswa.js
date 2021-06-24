@@ -24,7 +24,6 @@ export default function RowMahasiswa({ dataMahasiswa }) {
     setAction({
       mode: "EDIT",
       id: dataMahasiswa.id,
-      data: dataMahasiswa,
     });
   };
 
@@ -32,7 +31,6 @@ export default function RowMahasiswa({ dataMahasiswa }) {
     setAction({
       mode: "DELETE",
       id: dataMahasiswa.id,
-      data: {},
     });
   };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ActionContext } from "./MahasiswaContext";
-import { updateData, addData, deleteData } from "./API";
+import { updateData, addData, deleteData, getData } from "./API";
 
 const DEFAULT_DATA = {
   id: -1,
@@ -14,26 +14,29 @@ function FormMahasiswa() {
   const [data, setData] = useState(DEFAULT_DATA);
   const [editMode, setEditMode] = useState(false);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (actionData.mode === "EDIT") {
       // Mode Edit
+      const data = await getData(actionData.id);
+
       const formData = {
-        id: actionData.data.id,
-        name: actionData.data.name,
-        course: actionData.data.course,
-        score: actionData.data.score,
+        id: data.id ?? -1,
+        name: data.name ?? "",
+        course: data.course ?? "",
+        score: data.score ?? 0,
       };
 
+      if (data) setEditMode(true);
+
       setData(formData);
-      setEditMode(true);
-      setAction({ mode: "NONE", id: -1, data: {} });
+      setAction({ mode: "NONE", id: -1 });
     }
   }, [actionData]);
 
   useEffect(async () => {
     if (actionData.mode === "DELETE") {
       (await deleteData(actionData.id)) &&
-        setAction({ mode: "UPDATE", id: -1, data: {} });
+        setAction({ mode: "UPDATE", id: -1 });
     }
   }, [actionData]);
 
