@@ -3,7 +3,7 @@ import { DataMahasiswaContext, ActionContext } from "./MahasiswaContext";
 import RowMahasiswa from "./RowMahasiswa";
 import { getData } from "./API";
 
-const UPDATE_INTERVAL = 1000;
+const UPDATE_INTERVAL = 3000;
 const USE_UPDATER = true;
 
 export default function TableMahasiswa() {
