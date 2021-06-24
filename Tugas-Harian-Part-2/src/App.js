@@ -3,7 +3,7 @@ import React from "react";
 // import TabelBuahTerisi from "./Tugas-10/Tugas10";
 // import JamMundur from "./Tugas-11/Jam";
 // import Buah from "./Tugas-12/";
-import Mahasiswa from "./Tugas-13/Mahasiswa";
+import Mahasiswa from "./Tugas-14/Mahasiswa";
 import "./App.css";
 
 export default class App extends React.Component {
