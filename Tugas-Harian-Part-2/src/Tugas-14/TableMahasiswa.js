@@ -26,9 +26,9 @@ export default function TableMahasiswa() {
       }, UPDATE_INTERVAL);
 
       setUpdater(intervalObj);
-
-      return () => clearInterval(updaterObj);
     }
+
+    return () => clearInterval(updaterObj);
   }, []);
 
   useEffect(async () => {
