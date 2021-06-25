@@ -1,7 +1,8 @@
-.jam-mundur{
-    display: flex;
-    justify-content: space-between;
-    font-size: 2em;
-    font-weight: bold;
-    padding: 20px;
+.jam-mundur {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2em;
+  font-weight: bold;
+  padding: 20px;
+  width: 100vw;
 }

@@ -1,37 +1,39 @@
 .form {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 20px;
-    width: 500px;
-    margin: 0 auto 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  width: 500px;
+  margin: 0 auto 50px;
 }
 
-form > div{
-    margin-bottom: 10px;
+.form form {
+  border: 0;
 }
 
-label {
-    font-weight: bold;
-    width: 170px;
-    display: inline-block;
+.form form > div {
+  margin-bottom: 10px;
 }
 
-.pilihan-buah label{
-    font-weight: normal;
+.form label {
+  font-weight: bold;
+  min-width: 100px;
+  display: inline-block;
 }
 
-.daftar-buah{
-    display: inline-block;
+.form .pilihan-buah label {
+  font-weight: normal;
+  display: inline;
 }
 
-button {
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 1rem;
-    font-size: 1rem;
-    padding: 2px 9px;
+.form .pilihan-buah input[type="checkbox"] {
+  display: inline;
+  width: fit-content;
 }
 
-.pilihan-buah {
-    margin: 3px 0;
+.form .daftar-buah {
+  display: inline-block;
+}
+
+.form .pilihan-buah {
+  margin: 3px 0;
 }

@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import { ActionContext } from "./MahasiswaContext";
-import { updateData, addData, deleteData, getData } from "./API";
+import React, { useState, useEffect } from "react";
+import { updateData, addData, getData } from "./API";
+import PropTypes from "prop-types";
+import { useHistory, useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 const DEFAULT_DATA = {
   id: -1,
@@ -9,15 +11,15 @@ const DEFAULT_DATA = {
   score: 0,
 };
 
-function FormMahasiswa() {
-  const [actionData, setAction] = useContext(ActionContext);
+function FormMahasiswa(props) {
   const [data, setData] = useState(DEFAULT_DATA);
   const [editMode, setEditMode] = useState(false);
+  const { id } = useParams();
+  const history = useHistory();
 
   useEffect(async () => {
-    if (actionData.mode === "EDIT") {
-      // Mode Edit
-      const data = await getData(actionData.id);
+    if (props.editMode) {
+      const data = await getData(id);
 
       const formData = {
         id: data.id ?? -1,
@@ -26,19 +28,15 @@ function FormMahasiswa() {
         score: data.score ?? 0,
       };
 
-      if (data) setEditMode(true);
-
-      setData(formData);
-      setAction({ mode: "NONE", id: -1 });
+      if (data) {
+        setEditMode(true);
+        setData(formData);
+      } else {
+        alert("Data sudah tidak ada di database.");
+        history.push("/tugas15");
+      }
     }
-  }, [actionData]);
-
-  useEffect(async () => {
-    if (actionData.mode === "DELETE") {
-      (await deleteData(actionData.id)) &&
-        setAction({ mode: "UPDATE", id: -1 });
-    }
-  }, [actionData]);
+  }, []);
 
   const changeHandler = (e) => {
     const nama = e.target.name;
@@ -66,7 +64,7 @@ function FormMahasiswa() {
     if (isSuccess) {
       setData(DEFAULT_DATA);
       setEditMode(false);
-      setAction({ ...actionData, mode: "UPDATE" });
+      history.push("/tugas15");
     } else {
       alert(
         `Proses ${
@@ -77,7 +75,7 @@ function FormMahasiswa() {
   };
 
   return (
-    <div className="form" style={{ marginTop: "20px" }}>
+    <div className="form">
       <h2>Form Nilai Mahasiswa</h2>
       <form action="#" method="GET" onSubmit={submitHandler}>
         <div className="form-component">
@@ -123,8 +121,13 @@ function FormMahasiswa() {
           </button>
         </div>
       </form>
+      <Link to="/tugas15">Kembali ke tabel</Link>
     </div>
   );
 }
+
+FormMahasiswa.propTypes = {
+  editMode: PropTypes.bool,
+};
 
 export default FormMahasiswa;

@@ -7,6 +7,8 @@ import "./Mahasiswa.css";
 
 const URL_BASE = "http://backendexample.sanbercloud.com/api/student-scores/";
 const UPDATE_INTERVAL = 5000;
+const USE_UPDATER = false;
+
 const DEFAULT_STATE_UPDATE_DATA = {
   id: -1,
   nama: "",
@@ -38,12 +40,13 @@ const Mahasiswa = () => {
 
   useEffect(() => {
     getAllData().then();
-    updater = setInterval(async () => {
-      getAllData();
-    }, UPDATE_INTERVAL);
+    if (USE_UPDATER)
+      updater = setInterval(async () => {
+        getAllData();
+      }, UPDATE_INTERVAL);
 
     return () => {
-      clearInterval(updater);
+      if (USE_UPDATER) clearInterval(updater);
     };
   }, []);
 

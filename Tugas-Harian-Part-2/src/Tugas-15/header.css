@@ -1,0 +1,37 @@
+header.dark {
+  background-color: rgb(32, 32, 32);
+  color: white;
+}
+
+header.light {
+  background-color: white;
+  color: black;
+}
+
+header {
+  width: 100vw;
+  border-bottom: 1px solid black;
+}
+
+header ul {
+  margin: 0;
+}
+
+header ul li {
+  display: inline-block;
+}
+
+header a {
+  display: inline-block;
+  padding: 20px 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+header.light a:hover {
+  background-color: #ddd;
+}
+
+header.dark a:hover {
+  background-color: black;
+}

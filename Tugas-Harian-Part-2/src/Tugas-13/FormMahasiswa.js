@@ -52,7 +52,7 @@ const FormMahasiswa = (props) => {
   };
 
   return (
-    <div className="form">
+    <div className="form" style={{ marginTop: "20px" }}>
       <h2>Form Nilai Mahasiswa</h2>
       <form action="#" method="GET" onSubmit={submitHandler}>
         <div className="form-component">

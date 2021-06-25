@@ -4,7 +4,7 @@ import RowMahasiswa from "./RowMahasiswa";
 import { getData } from "./API";
 
 const UPDATE_INTERVAL = 3000;
-const USE_UPDATER = true;
+const USE_UPDATER = false;
 
 export default function TableMahasiswa() {
   const [actionData, setAction] = useContext(ActionContext);
@@ -28,7 +28,7 @@ export default function TableMahasiswa() {
       setUpdater(intervalObj);
     }
 
-    return () => clearInterval(updaterObj);
+    return () => USE_UPDATER && clearInterval(updaterObj);
   }, []);
 
   useEffect(async () => {

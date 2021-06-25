@@ -121,7 +121,7 @@ class FormBuah extends Component {
               id="berat-total"
               value={this.state.data.beratTotal}
               onChange={this.__changeHandler}
-              min="1"
+              min="2000"
               required
             />
           </div>

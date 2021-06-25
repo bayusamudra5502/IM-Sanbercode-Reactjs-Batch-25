@@ -1,20 +1,22 @@
-table{
-    border: 1px solid black;
-    margin: 0 auto;
+table.tugas10 {
+  border: 1px solid black;
+  margin: 0 auto;
+  border-collapse: separate;
 }
 
-th{
-    background-color: #aaa;
+.tugas10 th {
+  background-color: #aaa;
 }
 
-td {
-    background-color: #FF773F;
+.tugas10 td {
+  background-color: #ff773f;
 }
 
-.kolom-nama{
-    width: 300px;
+.tugas10 .kolom-nama {
+  width: 300px;
 }
 
-.kolom-harga, .kolom-berat{
-    width: 150px;
+.tugas10 .kolom-harga,
+.tugas10 .kolom-berat {
+  width: 150px;
 }
