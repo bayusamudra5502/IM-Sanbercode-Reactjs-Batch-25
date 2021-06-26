@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { fetchData } from "../../lib/API";
-import "./Home.css";
+import "../../assets/css/Home.css";
 
 class Home extends Component {
   constructor(props) {

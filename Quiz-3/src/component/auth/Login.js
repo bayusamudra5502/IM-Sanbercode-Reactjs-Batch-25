@@ -3,7 +3,7 @@ import { LoginContext } from "../Context/LoginContext";
 import { isValidLogin, setLogin as setLoginBrowser } from "./loginLib";
 import { useHistory } from "react-router";
 
-import "./login.css";
+import "../../assets/css/login.css";
 
 export default function Login() {
   const [formData, setFormData] = useState({ username: "", password: "" });

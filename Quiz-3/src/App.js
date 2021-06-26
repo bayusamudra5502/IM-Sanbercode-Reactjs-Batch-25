@@ -5,7 +5,7 @@ import Content from "./component/Content";
 import Footer from "./component/footer";
 import { LoginProvider } from "./component/Context/LoginContext";
 import "./assets/css/style.css";
-import "./index.css";
+import "./assets/css/index.css";
 
 function App() {
   return (

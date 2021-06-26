@@ -6,7 +6,7 @@ import AppTable from "./AppTable";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import AppForm from "./AppForm";
-import "./AppList.css";
+import "../../assets/css/AppList.css";
 
 export default function AppList() {
   const { login } = useContext(LoginContext);
