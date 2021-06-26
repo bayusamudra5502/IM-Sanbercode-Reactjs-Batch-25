@@ -1,0 +1,18 @@
+.login {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+form.login label {
+  width: 100px;
+}
+
+form.login input {
+  width: 300px !important;
+}
+
+form.login button {
+  margin: 40px auto;
+  display: block;
+  width: 100px;
+}

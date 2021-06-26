@@ -1,0 +1,80 @@
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.search-bar {
+  text-align: center;
+}
+
+.search-bar input {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border-bottom: 2px solid hsl(0, 0%, 85%);
+  padding: 5px;
+}
+
+tbody tr:hover {
+  background-color: hsl(0, 0%, 90%);
+}
+
+td li {
+  list-style-type: none;
+}
+
+td ul {
+  padding: 0;
+}
+
+.form-component label {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+}
+
+.form-component {
+  margin-bottom: 10px;
+}
+
+.form-component input[type="text"] {
+  width: 300px;
+}
+
+.form-component textarea {
+  width: 300px;
+  height: 5em;
+}
+
+.error-checkbox {
+  color: red;
+  border: 2px solid red;
+  padding: 10px;
+}
+
+.form-action button {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.form {
+  margin-bottom: 60px;
+}
+
+.form-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.break {
+  flex-basis: 100%;
+}
