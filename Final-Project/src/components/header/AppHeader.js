@@ -30,7 +30,7 @@ export default function AppHeader() {
     <Header className="header">
       <Link className="logo" to="/">
         <img src={icon} alt="logo"></img>
-        Movimepedia
+        Movigempedia
       </Link>
       <Menu theme="dark" mode="horizontal" selectedKeys={selected}>
         <Menu.Item key="home">

@@ -5,6 +5,7 @@ const API_URL = "https://backendexample.sanbersy.com/api/data-game";
 
 function dataTransform(obj) {
   return {
+    id: obj.id,
     genre: obj.genre,
     imageURL: obj.image_url,
     singleplayer: Boolean(obj.singlePlayer),

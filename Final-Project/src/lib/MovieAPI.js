@@ -5,6 +5,7 @@ const API_URL = "https://backendexample.sanbersy.com/api/data-movie";
 
 function dataTransform(obj) {
   return {
+    id: obj.id,
     description: obj.description,
     duration: obj.duration,
     genre: obj.genre,

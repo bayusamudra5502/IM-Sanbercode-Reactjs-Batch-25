@@ -5,6 +5,8 @@ import { Layout } from "antd";
 
 import AppHeader from "./components/header/AppHeader";
 import Home from "./components/home/Home";
+import Movie from "./components/movies/";
+import MovieItem from "./components/movieItem/MovieItem";
 
 const { Content } = Layout;
 
@@ -20,7 +22,7 @@ function App() {
                 <Home />
               </Route>
               <Route exact path="/movies">
-                <p>Movie</p>
+                <Movie />
               </Route>
               <Route exact path="/games">
                 <p>Games</p>
@@ -38,7 +40,7 @@ function App() {
                 <p>Edit Movie ber-id</p>
               </Route>
               <Route path="/movies/:id">
-                <p>Movie ber-id</p>
+                <MovieItem />
               </Route>
               <Route path="/games/:id/edit">
                 <p>Edit Game ber-id</p>
