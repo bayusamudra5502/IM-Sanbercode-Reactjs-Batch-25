@@ -15,14 +15,18 @@ export default function Login() {
   const history = useHistory();
   const { setUser } = useContext(UserContext);
   const [isError, setError] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const submitHandler = async (data) => {
+    setLoading(true);
     const userObj = await login(data);
+    setLoading(false);
+
     if (userObj && userObj.status !== 1) {
       message.success("Berhasil Login");
       setUser(userObj);
       history.push("/");
-    } else if (userObj.status === 1) {
+    } else if (userObj?.status === 1) {
       setError(false);
       setError(true);
     } else {
@@ -77,7 +81,7 @@ export default function Login() {
             />
           </Form.Item>
           <Form.Item style={{ marginTop: "20px" }}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" isLoading={isLoading}>
               Login
             </Button>
           </Form.Item>

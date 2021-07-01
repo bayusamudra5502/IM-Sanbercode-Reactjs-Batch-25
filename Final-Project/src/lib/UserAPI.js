@@ -93,8 +93,12 @@ async function register({ name, email, password }) {
 
     return userObj;
   } catch (e) {
-    console.error("Terjadi kesalahan saat register user baru.");
-    return null;
+    if (e.response.status === 400) {
+      return { status: 1 };
+    } else {
+      console.error("Terjadi kesalahan saat register user baru.");
+      return null;
+    }
   }
 }
 

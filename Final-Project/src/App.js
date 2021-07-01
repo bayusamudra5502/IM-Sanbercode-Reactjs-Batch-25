@@ -10,6 +10,7 @@ import MovieItem from "./components/movieItem/MovieItem";
 import Games from "./components/game/Games";
 import GameItem from "./components/gameItem/GameItem";
 import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
 const { Content } = Layout;
 
@@ -35,6 +36,9 @@ function App() {
               </Route>
               <Route exact path="/login">
                 <Login />
+              </Route>
+              <Route exact path="/register">
+                <Register />
               </Route>
               <Route exact path="/logout">
                 <p>Logout</p>
