@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { fetchMovie } from "../../lib/MovieAPI";
 import Loading from "../Loading";
+import Jumbotron from "../Jumbotron";
 import { Rate } from "antd";
 
 export default function MovieItem() {
@@ -16,17 +17,14 @@ export default function MovieItem() {
   if (data) {
     return (
       <div className="movie-item">
-        <div className="jumbotron">
-          <img
-            src={data.imageURL}
-            alt="Movie Jumbotron"
-            style={{ bottom: "-50%" }}
-          ></img>
-          <div className="overlay"></div>
-        </div>
+        <Jumbotron
+          alt={`Backdrop film ${data.title}`}
+          src={data.imageURL}
+          imgStyle={{ bottom: "-50%" }}
+        />
         <div className="data">
           <div className="picture">
-            <img src={data.imageURL} alt="Nama Felm"></img>
+            <img src={data.imageURL} alt={data.title}></img>
           </div>
           <div className="header-data">
             <h1>{data.title}</h1>

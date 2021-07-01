@@ -7,6 +7,8 @@ import AppHeader from "./components/header/AppHeader";
 import Home from "./components/home/Home";
 import Movie from "./components/movies/";
 import MovieItem from "./components/movieItem/MovieItem";
+import Games from "./components/game/Games";
+import GameItem from "./components/gameItem/GameItem";
 
 const { Content } = Layout;
 
@@ -25,7 +27,7 @@ function App() {
                 <Movie />
               </Route>
               <Route exact path="/games">
-                <p>Games</p>
+                <Games />
               </Route>
               <Route exact path="/change-password">
                 <p>Change Password</p>
@@ -46,7 +48,7 @@ function App() {
                 <p>Edit Game ber-id</p>
               </Route>
               <Route path="/games/:id">
-                <p>Game ber-id</p>
+                <GameItem />
               </Route>
             </Switch>
           </Content>
