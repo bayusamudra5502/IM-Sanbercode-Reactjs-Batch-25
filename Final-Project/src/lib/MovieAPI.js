@@ -5,15 +5,15 @@ const API_URL = "https://backendexample.sanbersy.com/api/data-movie";
 
 function dataTransform(obj) {
   return {
-    id: obj.id,
-    description: obj.description,
-    duration: obj.duration,
-    genre: obj.genre,
-    imageURL: obj.image_url,
-    rating: obj.rating,
-    review: obj.review,
-    title: obj.title,
-    year: obj.year,
+    id: obj.id ?? 0,
+    description: obj.description ?? "",
+    duration: obj.duration ?? 0,
+    genre: obj.genre ?? "",
+    imageURL: obj.image_url ?? "",
+    rating: obj.rating ?? 0,
+    review: obj.review ?? "",
+    title: obj.title ?? "No Name",
+    year: obj.year ?? 0,
   };
 }
 

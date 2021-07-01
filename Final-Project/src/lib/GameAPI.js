@@ -5,14 +5,14 @@ const API_URL = "https://backendexample.sanbersy.com/api/data-game";
 
 function dataTransform(obj) {
   return {
-    id: obj.id,
-    genre: obj.genre,
-    imageURL: obj.image_url,
-    singleplayer: Boolean(obj.singlePlayer),
-    multiplayer: Boolean(obj.multiplayer),
-    name: obj.name,
-    platform: obj.platform,
-    release: obj.release,
+    id: obj.id ?? 0,
+    genre: obj.genre ?? "",
+    imageURL: obj.image_url ?? "",
+    singleplayer: Boolean(obj.singlePlayer) ?? false,
+    multiplayer: Boolean(obj.multiplayer) ?? false,
+    name: obj.name ?? "",
+    platform: obj.platform ?? "",
+    release: obj.release ?? "",
   };
 }
 

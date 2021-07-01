@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, message } from "antd";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import UserContext from "../context/UserContext";
+
+import { destroySession } from "../../lib/UserAPI";
 
 import icon from "../../assets/img/icon.png";
 import { getSession } from "../../lib/UserAPI";
@@ -26,6 +28,13 @@ export default function AppHeader() {
     }
   }, []);
 
+  const logout = (e) => {
+    e.preventDefault();
+    destroySession();
+    setUser(null);
+    message.info("Berhasil Logout.");
+  };
+
   return (
     <Header className="header">
       <Link className="logo" to="/">
@@ -48,7 +57,9 @@ export default function AppHeader() {
               <Link to="/change-password">Ubah Kata Sandi</Link>
             </Menu.Item>
             <Menu.Item key="logout">
-              <Link to="/logout">Logout</Link>
+              <a href="/logout" onClick={logout}>
+                Logout
+              </a>
             </Menu.Item>
           </SubMenu>
         ) : (
