@@ -118,7 +118,7 @@ async function changePassword(
 
     return true;
   } catch (e) {
-    if (e.status.response === 400) {
+    if (e.response.status === 400) {
       return { status: 1 };
     } else {
       console.error("Terjadi kesalahan saat mengubah kata sandi.");

@@ -25,6 +25,6 @@ export default function CardList({ CardComponent, dataFetcher }) {
 }
 
 CardList.propTypes = {
-  CardComponent: PropTypes.object,
+  CardComponent: PropTypes.func,
   dataFetcher: PropTypes.func,
 };
