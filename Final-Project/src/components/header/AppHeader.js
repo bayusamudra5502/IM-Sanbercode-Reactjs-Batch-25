@@ -56,6 +56,14 @@ export default function AppHeader() {
             <Menu.Item key="change-password">
               <Link to="/change-password">Ubah Kata Sandi</Link>
             </Menu.Item>
+            <SubMenu key="data" title="Lihat Data">
+              <Menu.Item key="data-movies">
+                <Link to="/data/movies">Data Movies</Link>
+              </Menu.Item>
+              <Menu.Item key="data-games">
+                <Link to="/data/games">Data Games</Link>
+              </Menu.Item>
+            </SubMenu>
             <Menu.Item key="logout">
               <a href="/logout" onClick={logout}>
                 Logout

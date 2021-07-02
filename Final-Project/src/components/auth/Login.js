@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Form, Input, Button, message, Alert } from "antd";
 import { FiMail } from "react-icons/fi";
 import { AiOutlineLock } from "react-icons/ai";
-import { login } from "../../lib/UserAPI";
+import { getSession, login } from "../../lib/UserAPI";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
@@ -19,12 +19,14 @@ export default function Login() {
   const [showMessage, setShowMessage] = useState(true);
   const [isLoading, setLoading] = useState(false);
 
-  if (user) {
+  if (user || getSession()) {
     if (showMessage) {
       setMessage({
         type: "info",
         message: "Informasi",
-        description: `Anda sudah login sebagai ${user.name}`,
+        description: `Anda sudah login sebagai ${
+          user?.name ?? getSession().name
+        }`,
       });
     }
 

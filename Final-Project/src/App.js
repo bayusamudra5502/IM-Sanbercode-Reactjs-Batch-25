@@ -46,8 +46,14 @@ function App() {
                 <Route exact path="/logout">
                   <p>Logout</p>
                 </Route>
-                <Route exact path="/list-table">
+                <Route exact path="/data">
                   <p>List Table</p>
+                </Route>
+                <Route path="/data/movies">
+                  <p>List Table Movie</p>
+                </Route>
+                <Route path="/data/games">
+                  <p>List Table Movie</p>
                 </Route>
                 <Route path="/movies/:id/edit">
                   <p>Edit Movie ber-id</p>

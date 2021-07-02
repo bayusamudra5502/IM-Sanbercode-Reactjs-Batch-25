@@ -4,7 +4,7 @@ import { Form, Input, Button, message, notification } from "antd";
 import { FiMail } from "react-icons/fi";
 import { BsPerson } from "react-icons/bs";
 import { AiOutlineLock } from "react-icons/ai";
-import { register } from "../../lib/UserAPI";
+import { getSession, register } from "../../lib/UserAPI";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
@@ -20,11 +20,13 @@ export default function Register() {
   const [isAvailable, setAvailable] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
-  if (user) {
+  if (user || getSession()) {
     setMessage({
       type: "info",
       message: "Informasi",
-      description: `Anda sudah login sebagai ${user.name}`,
+      description: `Anda sudah login sebagai ${
+        user?.name ?? getSession().name
+      }`,
     });
     history.push("/");
     return null;

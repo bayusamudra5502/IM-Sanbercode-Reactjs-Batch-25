@@ -5,6 +5,7 @@ import { AiOutlineLock } from "react-icons/ai";
 import { destroySession, changePassword } from "../../lib/UserAPI";
 import { useHistory } from "react-router";
 
+import { getSession } from "../../lib";
 import MessageContext from "../context/MessageContext";
 import UserContext from "../context/UserContext";
 import Jumbotron from "../Jumbotron";
@@ -52,7 +53,7 @@ export default function GantiPassword() {
       }
     : null;
 
-  if (!user) {
+  if (!user && !getSession()) {
     setMessage({
       type: "warning",
       message: "Peringatan",
@@ -134,7 +135,7 @@ export default function GantiPassword() {
             </Form.Item>
             <Form.Item style={{ marginTop: "20px" }}>
               <Button type="primary" htmlType="submit" loading={isLoading}>
-                Register
+                Ubah Password
               </Button>
             </Form.Item>
           </Form>
