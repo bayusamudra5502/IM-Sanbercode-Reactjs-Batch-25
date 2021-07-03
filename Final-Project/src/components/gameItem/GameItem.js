@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 import { BsFillPeopleFill, BsFillPersonFill } from "react-icons/bs";
 import Jumbotron from "../Jumbotron";
 import Loading from "../Loading";
-import { Tooltip } from "antd";
-
+import { Tooltip, notification } from "antd";
+import MessageContext from "../context/MessageContext";
 import { fetchGame } from "../../lib";
 
 export default function GameItem() {
   const { id } = useParams();
   const [data, setData] = useState(undefined);
+  const { message, setMessage } = useContext(MessageContext);
 
   useEffect(async () => {
     const fetchtedData = await fetchGame(id);
     setData(fetchtedData);
   }, []);
+
+  useEffect(() => {
+    if (message) {
+      const { type, ...data } = message;
+      notification[type](data);
+      setMessage(null);
+    }
+  }, [message]);
 
   if (data) {
     const singleplayer = data.singleplayer ? (
@@ -28,6 +37,8 @@ export default function GameItem() {
         <BsFillPeopleFill color="white" />
       </Tooltip>
     ) : null;
+
+    document.title = `${data.name} - Movigempedia`;
 
     return (
       <div className="movie-item">

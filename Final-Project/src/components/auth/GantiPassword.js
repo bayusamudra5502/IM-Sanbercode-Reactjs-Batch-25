@@ -18,6 +18,8 @@ export default function GantiPassword() {
   const [isError, setError] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
+  document.title = "Ganti Password - Movigempedia";
+
   const sucessNotif = () => {
     notification.success({
       message: "Sukses",

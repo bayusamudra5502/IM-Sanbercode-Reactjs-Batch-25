@@ -58,10 +58,10 @@ export default function AppHeader() {
             </Menu.Item>
             <SubMenu key="data" title="Lihat Data">
               <Menu.Item key="data-movies">
-                <Link to="/data/movies">Data Movies</Link>
+                <Link to="/movies/data">Data Movies</Link>
               </Menu.Item>
               <Menu.Item key="data-games">
-                <Link to="/data/games">Data Games</Link>
+                <Link to="/games/data">Data Games</Link>
               </Menu.Item>
             </SubMenu>
             <Menu.Item key="logout">

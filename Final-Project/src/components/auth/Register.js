@@ -20,6 +20,8 @@ export default function Register() {
   const [isAvailable, setAvailable] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
+  document.title = "Register - Movigempedia";
+
   if (user || getSession()) {
     setMessage({
       type: "info",

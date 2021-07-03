@@ -13,6 +13,7 @@ import GameItem from "./components/gameItem/GameItem";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import GantiPassword from "./components/auth/GantiPassword";
+import DataContainer from "./components/data/DataContainer";
 
 const { Content } = Layout;
 
@@ -46,23 +47,26 @@ function App() {
                 <Route exact path="/logout">
                   <p>Logout</p>
                 </Route>
-                <Route exact path="/data">
-                  <p>List Table</p>
+                <Route exact path="/games/data">
+                  <DataContainer />
                 </Route>
-                <Route path="/data/movies">
-                  <p>List Table Movie</p>
+                <Route exact path="/movies/data">
+                  <DataContainer />
                 </Route>
-                <Route path="/data/games">
-                  <p>List Table Movie</p>
+                <Route exact path="/games/add">
+                  <DataContainer />
+                </Route>
+                <Route exact path="/movies/add">
+                  <DataContainer />
                 </Route>
                 <Route path="/movies/:id/edit">
-                  <p>Edit Movie ber-id</p>
+                  <DataContainer isEditMode={true} />
                 </Route>
                 <Route path="/movies/:id">
                   <MovieItem />
                 </Route>
                 <Route path="/games/:id/edit">
-                  <p>Edit Game ber-id</p>
+                  <DataContainer isEditMode={true} />
                 </Route>
                 <Route path="/games/:id">
                   <GameItem />

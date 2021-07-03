@@ -19,6 +19,8 @@ export default function Login() {
   const [showMessage, setShowMessage] = useState(true);
   const [isLoading, setLoading] = useState(false);
 
+  document.title = "Login - Movigempedia";
+
   if (user || getSession()) {
     if (showMessage) {
       setMessage({

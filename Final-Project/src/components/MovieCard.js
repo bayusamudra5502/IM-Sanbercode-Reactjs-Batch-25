@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Skeleton, Rate } from "antd";
+import { Card, Skeleton, Rate, Tooltip } from "antd";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -53,11 +53,10 @@ export default function MovieCard({ data }) {
             {dataState.title} ({dataState.year})
           </Link>
         </h3>
-        <Rate
-          style={{ marginBottom: "10px" }}
-          value={dataState.rating}
-          disabled
-        />
+        <Tooltip title={`Rating Film : ${dataState.rating}`}>
+          <Rate key={dataState.id} value={dataState.rating / 2} disabled />
+          <p> </p>
+        </Tooltip>
         <p>
           <strong>Deskripsi : </strong>
           {dataState.description}
