@@ -54,7 +54,11 @@ export default function MovieCard({ data }) {
           </Link>
         </h3>
         <Tooltip title={`Rating Film : ${dataState.rating}`}>
-          <Rate key={dataState.id} value={dataState.rating / 2} disabled />
+          <Rate
+            key={dataState.id}
+            value={(dataState.rating + 1) / 2}
+            disabled
+          />
           <p> </p>
         </Tooltip>
         <p>

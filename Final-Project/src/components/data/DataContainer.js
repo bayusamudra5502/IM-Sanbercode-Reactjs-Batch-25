@@ -10,6 +10,7 @@ import MovieTable from "./MovieTable";
 import GameTable from "./GameTable";
 import UserContext from "../context/UserContext";
 import MessageContext from "../context/MessageContext";
+import FormMovie from "./FormMovie";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -70,27 +71,27 @@ function DataContainer({ isEditMode }) {
             <Menu
               mode="inline"
               selectedKeys={[selectedKey]}
-              defaultOpenKeys={[opened]}
+              openKeys={["movies", "games"]}
               style={{ height: "100%" }}
               theme="dark"
             >
               <SubMenu key="movies" title="Film">
-                <Menu.Item key="add-movies">
-                  <Link to="/movies/add">Tambah Film</Link>
-                </Menu.Item>
                 <Menu.Item key="data-movies">
                   <Link to="/movies/data">Tabel Film</Link>
+                </Menu.Item>
+                <Menu.Item key="add-movies">
+                  <Link to="/movies/add">Tambah Film</Link>
                 </Menu.Item>
                 <Menu.Item key="edit-movies" hidden={hidden.film}>
                   Edit Film
                 </Menu.Item>
               </SubMenu>
               <SubMenu key="games" title="Game">
-                <Menu.Item key="add-games">
-                  <Link to="/games/add">Tambah Game</Link>
-                </Menu.Item>
                 <Menu.Item key="data-games">
                   <Link to="/games/data">Tabel Game</Link>
+                </Menu.Item>
+                <Menu.Item key="add-games">
+                  <Link to="/games/add">Tambah Game</Link>
                 </Menu.Item>
                 <Menu.Item key="edit-games" hidden={hidden.game}>
                   Edit Game
@@ -98,12 +99,14 @@ function DataContainer({ isEditMode }) {
               </SubMenu>
             </Menu>
           </Sider>
-          <div className="container-subfeature">
-            <Switch>
-              <Route path="/movies/data" component={MovieTable} />
-              <Route path="/games/data" component={GameTable} />
-            </Switch>
-          </div>
+          <Switch>
+            <Route path="/movies/:id/edit">
+              <FormMovie isEditMode={true} />
+            </Route>
+            <Route path="/movies/data" component={MovieTable} />
+            <Route path="/games/data" component={GameTable} />
+            <Route path="/movies/add" component={FormMovie} />
+          </Switch>
         </div>
       </>
     );

@@ -80,7 +80,7 @@ export default function MovieTable() {
       render(rating, { id }) {
         return (
           <Tooltip title={`Rating Film : ${rating}`}>
-            <Rate key={id} value={rating / 2} disabled />
+            <Rate key={id} value={(rating + 1) / 2} disabled />
             <span> </span>
           </Tooltip>
         );
@@ -146,32 +146,32 @@ export default function MovieTable() {
   };
 
   return (
-    <Space direction="vertical" size="middle" style={{ width: "100%" }}>
-      <h1>Tabel Film</h1>
-
-      <div className="pencarian">
-        <Form name="pencarian">
-          <Form.Item>
-            <Input
-              prefix={<FiSearch />}
-              placeholder="Masukkan Nama Film"
-              onChange={onChangeHandler}
-            />
-          </Form.Item>
-        </Form>
-      </div>
-
-      <Table
-        columns={columns}
-        dataSource={data}
-        expandable={{
-          expandedRowRender(data) {
-            return <ExpandTable data={data} />;
-          },
-        }}
-        loading={isLoading}
-      />
-    </Space>
+    <div className="container-subfeature">
+      <Space direction="vertical" size="middle" style={{ width: "100%" }}>
+        <h1>Tabel Film</h1>
+        <div className="pencarian">
+          <Form name="pencarian">
+            <Form.Item>
+              <Input
+                prefix={<FiSearch />}
+                placeholder="Masukkan Nama Film"
+                onChange={onChangeHandler}
+              />
+            </Form.Item>
+          </Form>
+        </div>
+        <Table
+          columns={columns}
+          dataSource={data}
+          expandable={{
+            expandedRowRender(data) {
+              return <ExpandTable data={data} />;
+            },
+          }}
+          loading={isLoading}
+        />
+      </Space>
+    </div>
   );
 }
 
@@ -187,7 +187,7 @@ function ExpandTable({ data }) {
         </p>
         <p>
           <strong>Rating : </strong>
-          <Rate value={data.rating / 2} disabled />
+          <Rate value={(data.rating + 1) / 2} disabled />
         </p>
         <p>
           <strong>Genre : </strong>

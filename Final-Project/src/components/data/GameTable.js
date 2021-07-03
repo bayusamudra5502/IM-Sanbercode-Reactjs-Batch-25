@@ -172,32 +172,34 @@ export default function GameTable() {
   };
 
   return (
-    <Space direction="vertical" size="middle" style={{ width: "100%" }}>
-      <h1>Tabel Games</h1>
+    <div className="container-subfeature">
+      <Space direction="vertical" size="middle" style={{ width: "100%" }}>
+        <h1>Tabel Games</h1>
 
-      <div className="pencarian">
-        <Form name="pencarian">
-          <Form.Item>
-            <Input
-              prefix={<FiSearch />}
-              placeholder="Masukkan Nama Game"
-              onChange={onChangeHandler}
-            />
-          </Form.Item>
-        </Form>
-      </div>
+        <div className="pencarian">
+          <Form name="pencarian">
+            <Form.Item>
+              <Input
+                prefix={<FiSearch />}
+                placeholder="Masukkan Nama Game"
+                onChange={onChangeHandler}
+              />
+            </Form.Item>
+          </Form>
+        </div>
 
-      <Table
-        columns={columns}
-        dataSource={data}
-        expandable={{
-          expandedRowRender(data) {
-            return <ExpandTable data={data} />;
-          },
-        }}
-        loading={isLoading}
-      />
-    </Space>
+        <Table
+          columns={columns}
+          dataSource={data}
+          expandable={{
+            expandedRowRender(data) {
+              return <ExpandTable data={data} />;
+            },
+          }}
+          loading={isLoading}
+        />
+      </Space>
+    </div>
   );
 }
 

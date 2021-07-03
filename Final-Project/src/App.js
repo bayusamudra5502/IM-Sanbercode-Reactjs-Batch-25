@@ -14,6 +14,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import GantiPassword from "./components/auth/GantiPassword";
 import DataContainer from "./components/data/DataContainer";
+import AppFooter from "./components/footer/Footer";
 
 const { Content } = Layout;
 
@@ -22,8 +23,8 @@ function App() {
     <Router>
       <MessageProvider>
         <UserProvider>
+          <AppHeader />
           <Layout>
-            <AppHeader />
             <Content>
               <Switch>
                 <Route exact path="/">
@@ -74,6 +75,7 @@ function App() {
               </Switch>
             </Content>
           </Layout>
+          <AppFooter />
         </UserProvider>
       </MessageProvider>
     </Router>

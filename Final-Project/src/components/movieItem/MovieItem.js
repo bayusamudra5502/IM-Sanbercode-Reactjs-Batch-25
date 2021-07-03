@@ -44,7 +44,7 @@ export default function MovieItem() {
           </div>
           <div className="body">
             <Tooltip title={`Rating : ${data.rating}`}>
-              <Rate value={data.rating / 2} disabled />
+              <Rate value={(data.rating + 1) / 2} disabled />
               <p> </p>
             </Tooltip>
             <p className="genre">

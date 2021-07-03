@@ -11,6 +11,7 @@ export async function checkImage(src) {
     if (e.response) {
       return { status: e.response.status };
     } else {
+      console.dir(e);
       return { status: -1 };
     }
   }
