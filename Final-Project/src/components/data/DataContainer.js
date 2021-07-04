@@ -11,6 +11,7 @@ import GameTable from "./GameTable";
 import UserContext from "../context/UserContext";
 import MessageContext from "../context/MessageContext";
 import FormMovie from "./FormMovie";
+import FormGame from "./FormGame";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -103,9 +104,13 @@ function DataContainer({ isEditMode }) {
             <Route path="/movies/:id/edit">
               <FormMovie isEditMode={true} />
             </Route>
+            <Route path="/games/:id/edit">
+              <FormGame isEditMode={true} />
+            </Route>
             <Route path="/movies/data" component={MovieTable} />
             <Route path="/games/data" component={GameTable} />
             <Route path="/movies/add" component={FormMovie} />
+            <Route path="/games/add" component={FormGame} />
           </Switch>
         </div>
       </>

@@ -6,6 +6,7 @@ import Loading from "../Loading";
 import { Tooltip, notification } from "antd";
 import MessageContext from "../context/MessageContext";
 import { fetchGame } from "../../lib";
+import NotFound from "../NotFound";
 
 export default function GameItem() {
   const { id } = useParams();
@@ -77,6 +78,6 @@ export default function GameItem() {
       </div>
     );
   } else {
-    return null;
+    return <NotFound />;
   }
 }

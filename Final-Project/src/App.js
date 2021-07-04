@@ -15,6 +15,7 @@ import Register from "./components/auth/Register";
 import GantiPassword from "./components/auth/GantiPassword";
 import DataContainer from "./components/data/DataContainer";
 import AppFooter from "./components/footer/Footer";
+import NotFound from "./components/NotFound";
 
 const { Content } = Layout;
 
@@ -71,6 +72,9 @@ function App() {
                 </Route>
                 <Route path="/games/:id">
                   <GameItem />
+                </Route>
+                <Route path="*">
+                  <NotFound />
                 </Route>
               </Switch>
             </Content>

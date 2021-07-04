@@ -73,7 +73,7 @@ export default function FormMovie({ isEditMode }) {
         })
       ) {
         message.success("Berhasil mengedit data");
-        history.push(`/movies/${id}`);
+        history.push("/movies/data");
       } else {
         message.error("Gagal mengedit data");
       }

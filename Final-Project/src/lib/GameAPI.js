@@ -20,7 +20,7 @@ function dataTransformForServer(obj) {
   return {
     genre: obj.genre,
     image_url: obj.imageURL,
-    singlePlayer: Boolean(obj.singlePlayer),
+    singlePlayer: Boolean(obj.singleplayer),
     multiplayer: Boolean(obj.multiplayer),
     name: obj.name,
     platform: obj.platform,

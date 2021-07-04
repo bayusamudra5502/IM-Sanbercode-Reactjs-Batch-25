@@ -5,6 +5,7 @@ import Loading from "../Loading";
 import Jumbotron from "../Jumbotron";
 import { Rate, notification, Tooltip } from "antd";
 import MessageContext from "../context/MessageContext";
+import NotFound from "../NotFound";
 
 export default function MovieItem() {
   const { id } = useParams();
@@ -70,6 +71,6 @@ export default function MovieItem() {
       </div>
     );
   } else {
-    return null;
+    return <NotFound />;
   }
 }
