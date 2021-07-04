@@ -10,6 +10,8 @@ import {
   Rate,
   InputNumber,
   DatePicker,
+  Select,
+  Popover,
   message,
   notification,
   Skeleton,
@@ -37,9 +39,13 @@ export default function FormMovie({ isEditMode }) {
       const data = await fetchMovie(id);
 
       if (data) {
-        const { year } = data;
+        const { year, genre } = data;
+
+        const arrGenre = genre.split(",").map((el) => el.trim());
+        arrGenre.sort();
+
         const yearMoment = moment(year, "yyyy");
-        form.setFieldsValue({ ...data, year: yearMoment });
+        form.setFieldsValue({ ...data, year: yearMoment, genre: arrGenre });
         setImg(data.imageURL);
         setRating((data.rating + 1) / 2);
         setLoading(false);
@@ -60,9 +66,11 @@ export default function FormMovie({ isEditMode }) {
 
   const submitHandler = async (e) => {
     setSending(true);
-    const { year, ...submittedData } = e;
+    const { year, genre, ...submittedData } = e;
+    const strGenre = genre.join(", ");
     const data = {
       ...submittedData,
+      genre: strGenre,
       year: parseInt(year.format("YYYY")),
     };
     if (isEditMode) {
@@ -93,7 +101,7 @@ export default function FormMovie({ isEditMode }) {
       <Skeleton loading={loadingData}>
         <h1>{isEditMode ? "Edit Film" : "Tambah Film"}</h1>
         <Row>
-          <Col flex={1} className="form-inner">
+          <Col flex="1 1 800px" className="form-inner">
             <Form onFinish={submitHandler} layout="vertical" form={form}>
               <Form.Item
                 label="Judul Film"
@@ -113,15 +121,84 @@ export default function FormMovie({ isEditMode }) {
               >
                 <Input placeholder="Masukkan Durasi Film" />
               </Form.Item>
-              <Form.Item
-                label="Genre"
-                name="genre"
-                rules={[
-                  { required: true, message: "Silahkan masukan genre film" },
-                ]}
+              <Popover
+                content={
+                  <div>
+                    <p>
+                      Tambahkan koma <code>,</code> untuk menambahkan item
+                      lainnya.
+                    </p>
+                  </div>
+                }
+                title="Petunjuk"
+                trigger="focus"
               >
-                <Input placeholder="Masukkan Genre Film" />
-              </Form.Item>
+                <Form.Item
+                  label="Genre"
+                  name="genre"
+                  style={{ maxWidth: "100%" }}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Silahkan masukan genre film",
+                    },
+                  ]}
+                >
+                  <Select
+                    mode="tags"
+                    allowClear
+                    placeholder="Masukkan Genre Game"
+                    tokenSeparators={[","]}
+                    optionLabelProp="label"
+                  >
+                    <Select.Option value="Drama" key="drama">
+                      Drama
+                    </Select.Option>
+                    <Select.Option value="Horror" key="horror">
+                      Horror
+                    </Select.Option>
+                    <Select.Option value="Petualangan" key="petualangan">
+                      Petualangan
+                    </Select.Option>
+                    <Select.Option value="Aksi" key="aksi">
+                      Aksi
+                    </Select.Option>
+                    <Select.Option value="Animasi" key="animasi">
+                      Animasi
+                    </Select.Option>
+                    <Select.Option value="Dokumenter" key="dokumenter">
+                      Dokumenter
+                    </Select.Option>
+                    <Select.Option value="Keluarga" key="keluarga">
+                      Keluarga
+                    </Select.Option>
+                    <Select.Option value="Persahabatan" key="persahabatan">
+                      Persahabatan
+                    </Select.Option>
+                    <Select.Option value="Romantis" key="romantis">
+                      Romantis
+                    </Select.Option>
+                    <Select.Option value="Fiksi Ilmiah" key="fiksi">
+                      Fiksi Ilmiah
+                    </Select.Option>
+                    <Select.Option value="Thriller" key="thriller">
+                      Thriller
+                    </Select.Option>
+                    <Select.Option value="Misteri" key="misteri">
+                      Misteri
+                    </Select.Option>
+                    <Select.Option value="Biografi" key="biografi">
+                      Biografi
+                    </Select.Option>
+                    <Select.Option value="Musikal" key="musikal">
+                      Musikal
+                    </Select.Option>
+                    <Select.Option value="Noir" key="noir">
+                      Noir
+                    </Select.Option>
+                  </Select>
+                </Form.Item>
+              </Popover>
               <Form.Item
                 label="URL Cover"
                 name="imageURL"

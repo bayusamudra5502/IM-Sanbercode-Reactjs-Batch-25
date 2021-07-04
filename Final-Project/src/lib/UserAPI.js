@@ -89,7 +89,6 @@ async function register({ name, email, password }) {
     });
 
     const userObj = new User(result.data);
-    setSession(userObj);
 
     return userObj;
   } catch (e) {
