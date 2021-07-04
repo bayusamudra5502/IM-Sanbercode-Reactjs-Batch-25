@@ -18,13 +18,14 @@ import {
 } from "antd";
 import { checkImage } from "../../lib/ContentChecker";
 import { useHistory, useParams } from "react-router";
+import { destroySession } from "../../lib";
 import UserContext from "../context/UserContext";
 import moment from "moment";
 import { fetchMovie, editMovie, addMovie } from "../../lib/MovieAPI";
 
 export default function FormMovie({ isEditMode }) {
   const [form] = Form.useForm();
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const history = useHistory();
   const [imgSrc, setImg] = useState("https://fakeimg.pl/300x500/");
   const { id } = useParams();
@@ -80,21 +81,32 @@ export default function FormMovie({ isEditMode }) {
       year: parseInt(year.format("YYYY")),
     };
     if (isEditMode) {
-      if (
-        await editMovie(user, {
-          ...data,
-          id,
-        })
-      ) {
+      const result = await editMovie(user, {
+        ...data,
+        id,
+      });
+
+      if (result.status) {
         message.success("Berhasil mengedit data");
         history.push("/movies/data");
+      } else if (result.data === "Token Error") {
+        message.error("Sesi anda telah habis");
+        setUser(null);
+        destroySession();
+        history.push("/");
       } else {
         message.error("Gagal mengedit data");
       }
     } else {
-      if (await addMovie(user, data)) {
+      const result = await addMovie(user, data);
+      if (result.status) {
         message.success("Berhasil menambah data");
         history.push("/movies/data");
+      } else if (result.data === "Token Error") {
+        message.error("Sesi anda telah habis");
+        history.push("/");
+        setUser(null);
+        destroySession();
       } else {
         message.error("Gagal menambahkan data");
       }
@@ -123,9 +135,24 @@ export default function FormMovie({ isEditMode }) {
                 name="duration"
                 rules={[
                   { required: true, message: "Silahkan masukan durasi film" },
+                  () => ({
+                    validator(_, value) {
+                      if (value > 0) {
+                        return Promise.resolve();
+                      } else {
+                        return Promise.reject(
+                          "Nilai harus lebih besar daripada 0"
+                        );
+                      }
+                    },
+                  }),
                 ]}
               >
-                <Input placeholder="Masukkan Durasi Film" />
+                <InputNumber
+                  style={{ width: "100%" }}
+                  placeholder="Masukkan Durasi Film"
+                  min={1}
+                />
               </Form.Item>
               <Popover
                 content={

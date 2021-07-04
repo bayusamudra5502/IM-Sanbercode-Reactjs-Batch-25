@@ -65,10 +65,20 @@ async function addMovie(userObj, data) {
         },
       });
 
-      return true;
+      return { status: true };
     } catch (e) {
-      console.error("Gagal menambahkan data");
-      return false;
+      if (e.response.status === 400) {
+        const regex = /token/gi;
+
+        if (regex.test(e.response.data?.status ?? "")) {
+          return { status: false, data: "Token Error" };
+        } else {
+          return { status: false };
+        }
+      } else {
+        console.error("Gagal menambahkan data");
+        return { status: false };
+      }
     }
   } else {
     throw {
@@ -91,13 +101,21 @@ async function editMovie(userObj, data, notfoundCallback = notfound) {
         },
       });
 
-      return true;
+      return { status: true };
     } catch (e) {
       if (e.response.status === 404 && notfoundCallback()) {
         return addMovie(userObj, data);
+      } else if (e.response.status === 400) {
+        const regex = /token/gi;
+
+        if (regex.test(e.response.data?.status ?? "")) {
+          return { status: false, data: "Token Error" };
+        } else {
+          return { status: false };
+        }
       } else {
         console.error(`Gagal mengedit data. Status: ${e.response.status}`);
-        return false;
+        return { status: false };
       }
     }
   } else {
@@ -119,10 +137,20 @@ async function deleteMovie(userObj, id) {
         },
       });
 
-      return true;
+      return { status: true };
     } catch (e) {
-      console.error("Gagal menghapus data.");
-      return false;
+      if (e.response.status === 400) {
+        const regex = /token/gi;
+
+        if (regex.test(e.response.data?.status ?? "")) {
+          return { status: false, data: "Token Error" };
+        } else {
+          return { status: false };
+        }
+      } else {
+        console.error("Gagal menghapus data");
+        return { status: false };
+      }
     }
   } else {
     throw {

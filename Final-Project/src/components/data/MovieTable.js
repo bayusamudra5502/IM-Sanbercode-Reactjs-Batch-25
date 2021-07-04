@@ -14,18 +14,34 @@ import {
 } from "antd";
 import { FiSearch } from "react-icons/fi";
 import { deleteMovie } from "../../lib/MovieAPI";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { fetchMovie } from "../../lib/MovieAPI";
-
+import { destroySession } from "../../lib";
 import UserContext from "../context/UserContext";
 
 export default function MovieTable() {
   document.title = "Data Film - Movigempedia";
 
+  const { setUser } = useContext(UserContext);
+  const history = useHistory();
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [filterData, setFilter] = useState([]);
   const [filterGenre, setFilterGenre] = useState([]);
+  const [errorToken, setErrorToken] = useState(false);
+
+  useEffect(() => {
+    if (errorToken) {
+      setUser(null);
+      destroySession();
+      history.push("/");
+      message.error("Sesi anda telah habis");
+    }
+  }, [errorToken]);
+
+  const errorTokenHandler = () => {
+    setErrorToken(true);
+  };
 
   const updateData = async () => {
     setLoading(true);
@@ -109,7 +125,13 @@ export default function MovieTable() {
       title: "Aksi",
       key: "action",
       render(_, data) {
-        return <ActionBar id={data.id} onDelete={updateData} />;
+        return (
+          <ActionBar
+            id={data.id}
+            onDelete={updateData}
+            onErrorToken={errorTokenHandler}
+          />
+        );
       },
     },
   ];
@@ -214,16 +236,19 @@ function ExpandTable({ data }) {
   );
 }
 
-function ActionBar({ id, onDelete }) {
+function ActionBar({ id, onDelete, onErrorToken }) {
+  const { user } = useContext(UserContext);
   const [isLoading, setLoading] = useState(false);
   const [visibility, setVisibility] = useState(false);
-  const { user } = useContext(UserContext);
 
   const deleteHandler = async () => {
     setLoading(true);
     setVisibility(false);
-    if (await deleteMovie(user, id)) {
+    const result = await deleteMovie(user, id);
+    if (result.status) {
       message.success("Data berhasil dihapus");
+    } else if (result.data === "Token Error") {
+      onErrorToken();
     } else {
       message.error("Terjadi kesalahan saat menghapus data");
     }
@@ -263,6 +288,7 @@ function ActionBar({ id, onDelete }) {
 ActionBar.propTypes = {
   id: PropTypes.number,
   onDelete: PropTypes.func,
+  onErrorToken: PropTypes.func,
 };
 
 ExpandTable.propTypes = {

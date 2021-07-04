@@ -14,13 +14,16 @@ import {
   Input,
   Table,
 } from "antd";
+import { useHistory } from "react-router";
 import { fetchGame, deleteGame } from "../../lib/GameAPI";
-
+import { destroySession } from "../../lib";
 import UserContext from "../context/UserContext";
 
 export default function GameTable() {
   document.title = "Data Games - Movigempedia";
 
+  const history = useHistory();
+  const { setUser } = useContext(UserContext);
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [dataFilter, setDataFilter] = useState({
@@ -28,6 +31,20 @@ export default function GameTable() {
     platform: [],
     release: [],
   });
+  const [errorToken, setErrorToken] = useState(false);
+
+  useEffect(() => {
+    if (errorToken) {
+      setUser(null);
+      destroySession();
+      history.push("/");
+      message.error("Sesi anda telah habis");
+    }
+  }, [errorToken]);
+
+  const errorTokenHandler = () => {
+    setErrorToken(true);
+  };
 
   const updateData = async () => {
     setLoading(true);
@@ -150,7 +167,13 @@ export default function GameTable() {
       title: "Aksi",
       key: "action",
       render(_, data) {
-        return <ActionBar id={data.id} onDelete={updateData} />;
+        return (
+          <ActionBar
+            id={data.id}
+            onDelete={updateData}
+            onErrorToken={errorTokenHandler}
+          />
+        );
       },
     },
   ];
@@ -244,7 +267,7 @@ function ExpandTable({ data }) {
   );
 }
 
-function ActionBar({ id, onDelete }) {
+function ActionBar({ id, onDelete, onErrorToken }) {
   const [isLoading, setLoading] = useState(false);
   const [visibility, setVisibility] = useState(false);
   const { user } = useContext(UserContext);
@@ -252,8 +275,11 @@ function ActionBar({ id, onDelete }) {
   const deleteHandler = async () => {
     setLoading(true);
     setVisibility(false);
-    if (await deleteGame(user, id)) {
+    const result = await deleteGame(user, id);
+    if (result.status) {
       message.success(`Game berhasil dihapus`);
+    } else if (result.data === "Token Error") {
+      onErrorToken();
     } else {
       message.error("Proses penghapusan gagal");
     }
@@ -315,6 +341,7 @@ function filtersBuilder(data, key, delimeter = null) {
 ActionBar.propTypes = {
   id: PropTypes.number,
   onDelete: PropTypes.func,
+  onErrorToken: PropTypes.func,
 };
 
 ExpandTable.propTypes = {

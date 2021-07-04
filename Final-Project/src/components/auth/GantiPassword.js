@@ -33,7 +33,7 @@ export default function GantiPassword() {
     const respondObj = await changePassword(user, data);
     setLoading(false);
 
-    if (respondObj && respondObj.status !== 1) {
+    if (respondObj && respondObj.status !== 1 && respondObj.status !== 2) {
       message.info("Kata sandi berhasil diubah.");
       setUser(null);
       destroySession();
@@ -41,6 +41,11 @@ export default function GantiPassword() {
       history.push("/login");
     } else if (respondObj?.status === 1) {
       setError(true);
+    } else if (respondObj?.status === 2) {
+      message.error("Sesi anda telah habis");
+      setUser(null);
+      destroySession();
+      history.push("/");
     } else {
       message.error("Terjadi kesalahan saat mengubah password.");
     }

@@ -20,6 +20,7 @@ import { useHistory, useParams } from "react-router";
 import { BsFillPeopleFill, BsFillPersonFill } from "react-icons/bs";
 import UserContext from "../context/UserContext";
 import moment from "moment";
+import { destroySession } from "../../lib";
 import { fetchGame, addGame, editGame } from "../../lib/GameAPI";
 
 function tagRender({ value, closable, onClose }) {
@@ -55,7 +56,7 @@ function tagRender({ value, closable, onClose }) {
 
 export default function FormGame({ isEditMode }) {
   const [form] = Form.useForm();
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const history = useHistory();
   const [imgSrc, setImg] = useState("https://fakeimg.pl/300x500/");
   const { id } = useParams();
@@ -149,21 +150,31 @@ export default function FormGame({ isEditMode }) {
     console.dir(e);
 
     if (isEditMode) {
-      if (
-        await editGame(user, {
-          ...data,
-          id,
-        })
-      ) {
+      const result = await editGame(user, {
+        ...data,
+        id,
+      });
+      if (result.status) {
         message.success("Berhasil mengedit data");
         history.push("/games/data");
+      } else if (result.data === "Token Error") {
+        message.error("Sesi anda telah habis");
+        setUser(null);
+        destroySession();
+        history.push("/");
       } else {
         message.error("Gagal mengedit data");
       }
     } else {
-      if (await addGame(user, data)) {
+      const result = await addGame(user, data);
+      if (result.status) {
         message.success("Berhasil menambah data");
         history.push("/games/data");
+      } else if (result.data === "Token Error") {
+        message.error("Sesi anda telah habis");
+        setUser(null);
+        destroySession();
+        history.push("/");
       } else {
         message.error("Gagal menambahkan data");
       }

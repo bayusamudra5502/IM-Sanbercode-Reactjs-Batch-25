@@ -58,7 +58,13 @@ export default function AppHeader() {
             </Menu.Item>
             <SubMenu key="data" title="Lihat Data">
               <Menu.Item key="data-movies">
-                <Link to="/movies/data">Data Movies</Link>
+                <Link to="/movies/data">Data Film</Link>
+              </Menu.Item>
+              <Menu.Item key="add-movies">
+                <Link to="/movies/add">Tambah Film</Link>
+              </Menu.Item>
+              <Menu.Item key="ass-games">
+                <Link to="/games/add">Tambah Games</Link>
               </Menu.Item>
               <Menu.Item key="data-games">
                 <Link to="/games/data">Data Games</Link>

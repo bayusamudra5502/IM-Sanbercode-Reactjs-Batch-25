@@ -118,7 +118,13 @@ async function changePassword(
     return true;
   } catch (e) {
     if (e.response.status === 400) {
-      return { status: 1 };
+      const regex = /token/gi;
+
+      if (regex.test(e.response.data?.status ?? "")) {
+        return { status: 2 };
+      } else {
+        return { status: 1 };
+      }
     } else {
       console.error("Terjadi kesalahan saat mengubah kata sandi.");
       return null;
