@@ -63,6 +63,12 @@ export default function FormGame({ isEditMode }) {
   const [imageFeedback, setImgFeedback] = useState({});
   const [loadingData, setLoading] = useState(false);
 
+  if (isEditMode) {
+    document.title = "Edit Game - Movigempedia";
+  } else {
+    document.title = "Tambah Game - Movigempedia";
+  }
+
   useEffect(async () => {
     if (isEditMode) {
       setLoading(true);

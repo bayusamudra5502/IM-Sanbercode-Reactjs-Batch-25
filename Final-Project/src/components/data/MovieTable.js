@@ -20,6 +20,8 @@ import { fetchMovie } from "../../lib/MovieAPI";
 import UserContext from "../context/UserContext";
 
 export default function MovieTable() {
+  document.title = "Data Film - Movigempedia";
+
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [filterData, setFilter] = useState([]);

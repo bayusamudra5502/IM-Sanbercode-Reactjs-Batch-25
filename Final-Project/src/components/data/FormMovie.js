@@ -33,6 +33,12 @@ export default function FormMovie({ isEditMode }) {
   const [ratingNum, setRating] = useState(0);
   const [loadingData, setLoading] = useState(false);
 
+  if (isEditMode) {
+    document.title = "Edit Film - Movigempedia";
+  } else {
+    document.title = "Tambah Film - Movigempedia";
+  }
+
   useEffect(async () => {
     if (isEditMode) {
       setLoading(true);

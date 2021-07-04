@@ -19,6 +19,8 @@ import { fetchGame, deleteGame } from "../../lib/GameAPI";
 import UserContext from "../context/UserContext";
 
 export default function GameTable() {
+  document.title = "Data Games - Movigempedia";
+
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [dataFilter, setDataFilter] = useState({
