@@ -11,8 +11,8 @@ export default function HomeGames() {
 
   return (
     <div className="container">
-      <h2>Film Teratas</h2>
-      <p>Berikut ini adalah daftar film teratas kami</p>
+      <h2>Games Teratas</h2>
+      <p>Berikut ini adalah daftar game teratas kami</p>
       <CardList CardComponent={GameCard} dataFetcher={dataFetcher} />
     </div>
   );

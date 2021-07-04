@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Layout, Menu, message } from "antd";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router";
+import { useLocation, useHistory } from "react-router";
 import UserContext from "../context/UserContext";
 
 import { destroySession } from "../../lib/UserAPI";
@@ -14,6 +14,7 @@ const { Header } = Layout;
 
 export default function AppHeader() {
   const location = useLocation();
+  const history = useHistory();
   const { user, setUser } = useContext(UserContext);
   const regex = /\/([\w-]+)\/?/g;
 
@@ -33,6 +34,9 @@ export default function AppHeader() {
     destroySession();
     setUser(null);
     message.info("Berhasil Logout.");
+
+    const regex = /(add$|edit$|data$)/g;
+    if (regex.test(location.pathname)) history.push("/");
   };
 
   return (

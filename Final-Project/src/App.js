@@ -16,6 +16,7 @@ import GantiPassword from "./components/auth/GantiPassword";
 import DataContainer from "./components/data/DataContainer";
 import AppFooter from "./components/footer/Footer";
 import NotFound from "./components/NotFound";
+import Logout from "./components/auth/Logout";
 
 const { Content } = Layout;
 
@@ -47,7 +48,7 @@ function App() {
                   <Register />
                 </Route>
                 <Route exact path="/logout">
-                  <p>Logout</p>
+                  <Logout />
                 </Route>
                 <Route exact path="/games/data">
                   <DataContainer />
@@ -61,16 +62,16 @@ function App() {
                 <Route exact path="/movies/add">
                   <DataContainer />
                 </Route>
-                <Route path="/movies/:id/edit">
+                <Route exact path="/movies/:id/edit">
                   <DataContainer isEditMode={true} />
                 </Route>
-                <Route path="/movies/:id">
+                <Route exact path="/movies/:id">
                   <MovieItem />
                 </Route>
-                <Route path="/games/:id/edit">
+                <Route exact path="/games/:id/edit">
                   <DataContainer isEditMode={true} />
                 </Route>
-                <Route path="/games/:id">
+                <Route exact path="/games/:id">
                   <GameItem />
                 </Route>
                 <Route path="*">
